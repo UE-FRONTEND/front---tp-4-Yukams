@@ -1,10 +1,10 @@
 <template>
   <div class="inputWrapper">
     <div>
-        <input type="text" v-model="text"/>
+        <input id="new-todo-field" type="text" v-model="text"/>
     </div>
     <div>
-        <input type="button" @click="emitInput" value="Ajouter"/>
+        <input id="new-todo-button" type="button" @click="emitInput" value="Ajouter"/>
     </div>
   </div>
 </template>
