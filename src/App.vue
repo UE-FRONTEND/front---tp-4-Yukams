@@ -1,5 +1,9 @@
 <template>
-  <div>TODO</div>
+  <Inputs @new-todo="addTodo"/>
+  <TodoItem :todo-list="todos" @delete-todo="deleteTodo"/>
+  <div>
+    Nombre de tâches : {{ todosLength }}
+  </div>
 </template>
 
 <script>
@@ -17,6 +21,29 @@ export default {
       todos: []
     }
   },
+  computed: {
+    todosLength() {
+      return this.todos.length
+    }
+  },
+  methods: {
+    addTodo(text) {
+      if(this.todosLength !== 0) {
+        console.log(this.todos[this.todosLength - 1].id + 1)
+      }
+      this.todos.push(
+        {
+          text: text,
+          id: this.todosLength !== 0 ? this.todos[this.todosLength-1].id + 1 : 0
+        }
+      )
+    },
+    deleteTodo(todoId) {
+      this.todos.splice(this.todos.findIndex((todo) => {
+        return todo.id === todoId
+      }), 1)
+    }
+  }
 }
 </script>
 
